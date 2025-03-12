@@ -183,8 +183,8 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LIC
 
 ## 📞 Contact
 
-- Website: [medtrack.care](https://medtrack.care)
-- Email: medtrack.care@gmail.com
+- Website: [medtrack.care](https://medtrack.co.in)
+- Email: support@medtrack.co.in
 - Twitter: [@MedTrackCare](https://twitter.com/MedTrackCare)
 
 ---

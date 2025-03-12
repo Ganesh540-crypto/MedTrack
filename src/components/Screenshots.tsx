@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Monitor, Plus, Calendar, X } from 'lucide-react';
+import { ArrowRight,Monitor, Plus, Calendar, X } from 'lucide-react';
 import DashboardImage from "../assets/Dashboard.png";
 import AddmedicationImage from "../assets/Addmedication.png";
 import CheckupImage from "../assets/Checkup.png";
+
+
+
+import { useNavigate } from 'react-router-dom';
+
 
 const screenshots = [
   {
@@ -31,7 +36,7 @@ const screenshots = [
 
 const Screenshots = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
+  const navigate = useNavigate();
   return (
     <section id="screenshots" className="py-12 md:py-20 bg-accent">
       <div className="container-custom px-4 md:px-6">
@@ -110,9 +115,47 @@ const Screenshots = () => {
                 />
               </div>
             </motion.div>
+            
           </motion.div>
+
         )}
       </AnimatePresence>
+      <section className="py-20">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-900 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10 w-full h-full z-0">
+        <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,30 Q20,5 40,30 T60,30 T80,30 T100,30" fill="none" stroke="white" strokeWidth="0.5" />
+          <path d="M0,50 Q20,25 40,50 T60,50 T80,50 T100,50" fill="none" stroke="white" strokeWidth="0.5" />
+          <path d="M0,70 Q20,45 40,70 T60,70 T80,70 T100,70" fill="none" stroke="white" strokeWidth="0.5" />
+        </svg>
+      </div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative z-10"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+          Want to <span className="handwritten text-4xl md:text-5xl">Contribute </span> <span className="ml-1">Healthcare?</span>
+        </h2>
+        <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+          Be among the first to contribute to this revolutionary medical documentation technology.
+        </p>
+        <button 
+          onClick={() => window.open('https://deepscribe.netlify.app/', '_blank')}  
+          className="px-8 py-4 rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-colors shadow-lg flex items-center mx-auto space-x-2 group"
+        >
+          <span>Get Started Now</span>
+          <ArrowRight className="w-6 h-4 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
     </section>
   );
 };

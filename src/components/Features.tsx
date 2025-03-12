@@ -93,7 +93,7 @@ const FeatureCard = ({ feature, index }: { feature: any; index: number }) => {
         <div className={`inline-block p-3 rounded-2xl bg-${feature.color === 'primary' ? 'neutral' : 'secondary'}-100 
           group-hover:bg-${feature.color === 'primary' ? 'primary' : 'secondary'} transition-colors duration-300 mb-6`}>
           <Icon className={`w-8 h-8 text-${feature.color === 'primary' ? 'neutral-600' : 'secondary'} 
-            group-hover:text-white transition-colors duration-300`} />
+            group-hover: transition-colors duration-300`} />
         </div>
         <h3 className="text-xl font-semibold mb-4 group-hover:text-primary transition-colors duration-300">
           {feature.title}

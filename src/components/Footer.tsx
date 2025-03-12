@@ -156,7 +156,16 @@ const Footer = () => {
                   </button>
                 </li>
               ))}
+              <li key="deepscribe">
+                  <button 
+                    onClick={() => window.open('https://deepscribe.netlify.app/', '_blank')}  
+                    className="custom-font-size handwritten text-neutral-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200 ease-in-out"
+                  >
+                    Deepscribe
+                  </button>
+                </li>
             </ul>
+            
           </div>
 
           {/* Support Links */}

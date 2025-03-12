@@ -96,7 +96,7 @@ const StepCard: React.FC<StepCardProps> = ({ icon: Icon, title, description, col
             flex items-center justify-center mx-auto mb-6 group-hover:bg-${color} transition-colors duration-300`}
         >
           <Icon className={`w-8 h-8 text-${color === 'primary' ? 'neutral-600' : 'secondary'} 
-            group-hover:text-white transition-colors duration-300`} />
+            group-hover:transition-colors duration-300`} />
         </motion.div>
         <div className="absolute -top-4 left-4 text-5xl font-bold text-neutral-100">
           {index + 1}

@@ -52,29 +52,29 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-32 pb-20">
+    <div className="min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-20">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <span className="text-sm font-medium text-neutral-600 bg-neutral-100 px-4 py-2 rounded-full">
+          <span className="text-sm font-medium text-white bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
             Get in Touch
           </span>
-          <h1 className="text-4xl font-bold mt-6 mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-6 mb-4 text-white">
             Contact
-            <span className="heading-gradient block">
+            <span className="text-white block">
               Our Team
             </span>
           </h1>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -82,34 +82,34 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
           >
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="w-6 h-6 text-primary" />
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-white">Get in Touch</h2>
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="bg-white/20 p-2.5 sm:p-3 rounded-full flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Email</h3>
-                    <p className="text-neutral-600">support@medtrack.co.in</p>
+                    <h3 className="font-medium text-white text-sm sm:text-base">Email</h3>
+                    <p className="text-white/80 text-sm sm:text-base">support@medtrack.co.in</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Phone className="w-6 h-6 text-primary" />
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="bg-white/20 p-2.5 sm:p-3 rounded-full flex-shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Phone</h3>
-                    <p className="text-neutral-600">+91 6281117581</p>
+                    <h3 className="font-medium text-white text-sm sm:text-base">Phone</h3>
+                    <p className="text-white/80 text-sm sm:text-base">+91 6281117581</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="w-6 h-6 text-primary" />
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="bg-white/20 p-2.5 sm:p-3 rounded-full flex-shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Address</h3>
-                    <p className="text-neutral-600">
+                    <h3 className="font-medium text-white text-sm sm:text-base">Address</h3>
+                    <p className="text-white/80 text-sm sm:text-base">
                       VISTORA TRAYANA LLP<br />
                       Chilkanagar, Uppal<br />
                       Hyderabad, Telangana 500039
@@ -125,24 +125,24 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-8"
+            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg p-6 sm:p-8"
           >
             {submitStatus === 'success' ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center space-y-4 min-h-[400px]"
+                className="flex flex-col items-center justify-center space-y-4 min-h-[300px] sm:min-h-[400px]"
               >
-                <CheckCircle2 className="w-16 h-16 text-primary" />
-                <h3 className="text-2xl font-bold heading-gradient">Message Sent!</h3>
-                <p className="text-center text-neutral-600">
+                <CheckCircle2 className="w-12 h-12 sm:w-16 sm:h-16 text-white" />
+                <h3 className="text-xl sm:text-2xl font-bold text-white">Message Sent!</h3>
+                <p className="text-center text-white/80 text-sm sm:text-base">
                   Thank you for contacting us. We'll get back to you shortly.
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSubmitStatus('idle')}
-                  className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                  className="px-4 py-2 sm:px-6 sm:py-2 bg-white/90 text-slate-900 rounded-lg hover:bg-white transition-colors text-sm sm:text-base"
                 >
                   Send Another Message
                 </motion.button>
@@ -151,26 +151,26 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center space-y-4 min-h-[400px]"
+                className="flex flex-col items-center justify-center space-y-4 min-h-[300px] sm:min-h-[400px]"
               >
-                <XCircle className="w-16 h-16 text-red-500" />
-                <h3 className="text-2xl font-bold text-red-500">Message Failed!</h3>
-                <p className="text-center text-neutral-600">
+                <XCircle className="w-12 h-12 sm:w-16 sm:h-16 text-red-500" />
+                <h3 className="text-xl sm:text-2xl font-bold text-red-500">Message Failed!</h3>
+                <p className="text-center text-white/80 text-sm sm:text-base">
                   Sorry, there was an error sending your message. Please try again.
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSubmitStatus('idle')}
-                  className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                  className="px-4 py-2 sm:px-6 sm:py-2 bg-white/90 text-slate-900 rounded-lg hover:bg-white transition-colors text-sm sm:text-base"
                 >
                   Try Again
                 </motion.button>
               </motion.div>
             ) : (
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-white mb-1">
                     Name
                   </label>
                   <input
@@ -179,12 +179,12 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-2 bg-white/10 border border-white/30 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white placeholder-white/60 text-sm sm:text-base"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
                     Email
                   </label>
                   <input
@@ -193,12 +193,12 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-2 bg-white/10 border border-white/30 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white placeholder-white/60 text-sm sm:text-base"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 mb-1">
+                  <label htmlFor="subject" className="block text-sm font-medium text-white mb-1">
                     Subject
                   </label>
                   <input
@@ -207,12 +207,12 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-2 bg-white/10 border border-white/30 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white placeholder-white/60 text-sm sm:text-base"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-white mb-1">
                     Message
                   </label>
                   <textarea
@@ -221,7 +221,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-2 bg-white/10 border border-white/30 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50 text-white placeholder-white/60 text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -230,14 +230,14 @@ const Contact = () => {
                   whileTap={{ scale: 0.95 }}
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full bg-primary text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-colors ${
-                    isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-primary/90'
+                  className={`w-full bg-white/90 text-slate-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm sm:text-base ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-white'
                   }`}
                 >
                   {isSubmitting ? (
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
                   ) : (
-                    <Send className="w-4 h-4" />
+                    <Send className="w-3 h-3 sm:w-4 sm:h-4" />
                   )}
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </motion.button>

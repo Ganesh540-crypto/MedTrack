@@ -1,15 +1,10 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { useGateValue, useStatsigClient } from '@statsig/react-bindings';
 import PrescriptionScanner from './PrescriptionScanner';
+import Silk from './Silk';
 
 const Hero = () => {
-  // Statsig integration
-  const isNewUxEnabled = useGateValue("new_onboarding_ux");
-  console.log('Feature gate status:', isNewUxEnabled);
-  const { client } = useStatsigClient();
-  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -22,31 +17,20 @@ const Hero = () => {
   };
 
   const openWaitlist = () => {
-    // Log event when user clicks waitlist button
-    client?.logEvent("waitlist_click", "hero_section", {
-      timestamp: new Date().toISOString()
-    });
     window.open('https://getwaitlist.com/waitlist/22253', '_blank');
   };
 
   const openGitHub = () => {
-    // Log event when user clicks GitHub button
-    client?.logEvent("github_click", "hero_section", {
-      timestamp: new Date().toISOString()
-    });
     window.open('https://github.com/Ganesh540-crypto/MedTrack', '_blank');
   };
 
-  // Render different UX based on feature gate
   return (
     <section 
       id="hero"
-      className={`h-auto md:min-h-screen pt-20 pb-8 md:py-20 relative overflow-hidden ${
-        isNewUxEnabled ? 'bg-gradient-to-r from-accent to-blue-50' : 'bg-accent'
-      }`}
+      className="h-auto md:min-h-screen pt-20 pb-8 md:py-20 relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      <div className="container-custom pt-8 pb-4 md:py-20">
+      <div className="container-custom pt-8 pb-4 md:py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-start md:items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -58,43 +42,39 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-white rounded-full shadow-md"
+              className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
             >
-              <span className="text-sm font-medium text-neutral-600">
-                {isNewUxEnabled ? '✨ Experience the new design' : '🚀 Join the healthcare revolution'}
+              <span className="text-sm font-medium text-white">
+                🚀 Join the healthcare revolution
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance text-white">
               Smart Medication
               <br />
-              <span className="heading-gradient">
-                Management Made Simple
-              </span>
+              Management Made Simple
             </h1>
             
-            <p className="text-[1.3rem] sm:text-xl text-neutral-600 max-w-lg leading-relaxed text-balance mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-lg leading-relaxed text-balance mb-6 md:mb-8">
               Transform your medication routine with MedTrack. Intelligent reminders, 
               seamless tracking, and peace of mind in one elegant solution.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, backgroundColor: 'rgba(255, 255, 255, 0.95)' }}
+                whileTap={{ scale: 0.98 }}
                 onClick={openWaitlist}
-                className={`btn-primary inline-flex items-center gap-2 ${
-                  isNewUxEnabled ? 'bg-gradient-to-r from-primary to-secondary' : ''
-                }`}
+                className="bg-white/90 hover:bg-white text-slate-900 font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 Join Waitlist
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                whileTap={{ scale: 0.98 }}
                 onClick={openGitHub}
-                className="btn-secondary"
+                className="bg-white/10 backdrop-blur-md hover:bg-white/15 text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full border border-white/20 hover:border-white/30 transition-all duration-300 text-sm sm:text-base"
               >
                 Learn More
               </motion.button>
@@ -137,16 +117,16 @@ const Stat = ({ number, label, isLast }: { number: string; label: string; isLast
   >
     <motion.div 
       whileHover={{ 
-        scale: 1.05,
-        borderColor: '#6366f1',
+        scale: 1.02,
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
         transition: { duration: 0.2 }
       }}
-      className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg w-full max-w-[280px] lg:w-auto border-2 border-transparent transition-colors duration-200 hover:border-primary/50"
+      className="text-center bg-white/10 backdrop-blur-md rounded-xl p-4 w-full max-w-[280px] lg:w-auto border border-white/20 hover:border-white/30 transition-all duration-200"
     >
-      <div className="text-2xl font-bold text-primary whitespace-nowrap">{number}</div>
-      <div className="text-sm text-neutral-600 mt-1 whitespace-nowrap">{label}</div>
+      <div className="text-2xl font-bold text-white whitespace-nowrap">{number}</div>
+      <div className="text-sm text-white/70 mt-1 whitespace-nowrap">{label}</div>
     </motion.div>
-    {!isLast && <div className="hidden lg:block text-neutral-300 text-2xl mx-4">|</div>}
+    {!isLast && <div className="hidden lg:block text-white/30 text-2xl mx-4">|</div>}
   </motion.div>
 );
 

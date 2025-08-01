@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { StatsigProvider, useClientAsyncInit } from '@statsig/react-bindings';
-import { runStatsigAutoCapture } from '@statsig/web-analytics';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -15,64 +13,48 @@ import FAQ from './components/FAQ';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Terms from './components/Terms';
 import ScrollToTop from './components/ScrollToTop';
-
-function StatsigWrapper() {
-  const { client } = useClientAsyncInit('client-qmO9d1ziTV2OtgTHK7W8l7LBIbXAlz2V0w7hmQZugHJ', {
-    userID: '1WvIjnkhDxOBiBoKtrKy6b', // Replace with actual user ID if available
-  });
-
-  useEffect(() => {
-    if (client) {
-      runStatsigAutoCapture(client);
-    }
-  }, [client]);
-
-  return (
-    <StatsigProvider client={client} loadingComponent={<div>Loading...</div>}>
-      <App />
-    </StatsigProvider>
-  );
-}
+import Silk from './components/Silk';
 
 function App() {
-  useEffect(() => {
-    window.plugSDK.init({
-      app_id: 'don:core:dvrv-in-1:devo/2g41CxOrxx:plug_setting/1',
-      disable_plug_chat_window: true,
-    });
-    
-    window.plugSDK.onEvent((payload) => {
-      if (payload.type === 'ON_PLUG_WIDGET_READY') {
-        window.plugSDK.initSearchAgent();
-      }
-    });
-  }, []);
-
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={
-            <main>
-              <Hero />
-              <Features />
-              <Screenshots />
-              <HowItWorks />
-              <Team />
-              <Download />
-            </main>
-          } />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<Terms />} />
-        </Routes>
-        <Footer />
+      <div className="min-h-screen relative">
+        {/* Global Silk Background */}
+        <div className="fixed inset-0 z-0">
+          <Silk
+            speed={3.7}
+            scale={0.6}
+            color="#4169E1"
+            noiseIntensity={1.5}
+            rotation={0}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={
+              <main>
+                <Hero />
+                <Features />
+                <Screenshots />
+                <HowItWorks />
+                <Team />
+                <Download />
+              </main>
+            } />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
+          </Routes>
+          <Footer />
+        </div>
       </div>
     </Router>
   );
 }
 
-export default StatsigWrapper;
+export default App;

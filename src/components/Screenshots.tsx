@@ -38,7 +38,7 @@ const Screenshots = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const navigate = useNavigate();
   return (
-    <section id="screenshots" className="py-12 md:py-20 bg-accent">
+    <section id="screenshots" className="py-12 md:py-20">
       <div className="container-custom px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,16 +47,16 @@ const Screenshots = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-8 md:mb-16"
         >
-          <span className="text-sm font-medium text-neutral-600 bg-white px-4 py-2 rounded-full">
+          <span className="text-sm font-medium text-white bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
             App Preview
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-6 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mt-6 mb-4 text-white">
             Experience the
-            <span className="heading-gradient block">
+            <span className="text-white block">
               Future of Healthcare
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Experience the simplicity of medication management
           </p>
         </motion.div>
@@ -122,7 +122,7 @@ const Screenshots = () => {
       </AnimatePresence>
       <section className="py-20">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="bg-gray-900 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden">
+    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 w-full h-full z-0">
         <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,30 Q20,5 40,30 T60,30 T80,30 T100,30" fill="none" stroke="white" strokeWidth="0.5" />
@@ -141,12 +141,12 @@ const Screenshots = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
           Want to <span className="handwritten text-4xl md:text-5xl">Contribute </span> <span className="ml-1">Healthcare?</span>
         </h2>
-        <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-white/80 mb-8 max-w-2xl mx-auto">
           Be among the first to contribute to this revolutionary medical documentation technology.
         </p>
         <button 
           onClick={() => window.open('https://deepscribe.netlify.app/', '_blank')}  
-          className="px-8 py-4 rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-colors shadow-lg flex items-center mx-auto space-x-2 group"
+          className="px-8 py-4 rounded-lg bg-white/90 text-slate-900 hover:bg-white transition-colors shadow-lg flex items-center mx-auto space-x-2 group"
         >
           <span>Get Started Now</span>
           <ArrowRight className="w-6 h-4 group-hover:translate-x-1 transition-transform" />
@@ -188,34 +188,34 @@ const ScreenshotCard: React.FC<ScreenshotCardProps> = ({
     >
       <motion.div
         whileHover={{ y: -5 }}
-        className={`card overflow-hidden flex flex-col ${
+        className={`bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 ${
           index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
         }`}
       >
         <div className="w-full md:w-1/3 p-6 md:p-8 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-3">
-            <Icon className="w-5 h-5 text-secondary" />
-            <span className="text-sm font-medium text-secondary">
+            <Icon className="w-5 h-5 text-white" />
+            <span className="text-sm font-medium text-white/80">
               {label}
             </span>
           </div>
-          <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">{title}</h3>
-          <p className="text-neutral-600">{description}</p>
+          <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">{title}</h3>
+          <p className="text-white/70">{description}</p>
         </div>
 
         <div className="w-full md:w-2/3 p-4 md:p-6">
           <div 
-            className="card overflow-hidden cursor-pointer"
+            className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl overflow-hidden cursor-pointer hover:bg-white/25 transition-all duration-300"
             onClick={onImageClick}
           >
-            <div className="bg-neutral-100 px-4 py-2 border-b flex items-center gap-2">
+            <div className="bg-white/20 px-4 py-2 border-b border-white/20 flex items-center gap-2">
               <div className="flex gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
               </div>
               <div className="flex-1 text-center">
-                <div className="bg-white/80 mx-auto w-1/2 h-5 rounded text-xs flex items-center justify-center text-neutral-400">
+                <div className="bg-white/30 mx-auto w-1/2 h-5 rounded text-xs flex items-center justify-center text-white/80">
                   medtrack.co.in
                 </div>
               </div>

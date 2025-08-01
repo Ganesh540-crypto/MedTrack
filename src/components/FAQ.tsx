@@ -33,24 +33,24 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-32 pb-20">
+    <div className="min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-20">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <span className="text-sm font-medium text-neutral-600 bg-neutral-100 px-4 py-2 rounded-full">
+          <span className="text-sm font-medium text-white bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
             Help Center
           </span>
-          <h1 className="text-4xl font-bold mt-6 mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-6 mb-4 text-white">
             Frequently Asked
-            <span className="heading-gradient block">
+            <span className="text-white block">
               Questions
             </span>
           </h1>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Find answers to common questions about MedTrack and how it can help you manage your medications better.
           </p>
         </motion.div>
@@ -68,14 +68,14 @@ const FAQ = () => {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full text-left p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                className="w-full text-left p-4 sm:p-6 bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 rounded-lg hover:bg-white/15 transition-all duration-300"
               >
                 <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-medium">{faq.question}</h3>
+                  <h3 className="text-base sm:text-lg font-medium text-white pr-4">{faq.question}</h3>
                   {openIndex === index ? (
-                    <Minus className="w-5 h-5 text-primary" />
+                    <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
                   ) : (
-                    <Plus className="w-5 h-5 text-primary" />
+                    <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
                   )}
                 </div>
                 <motion.div
@@ -83,7 +83,7 @@ const FAQ = () => {
                   animate={{ height: openIndex === index ? 'auto' : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="mt-4 text-neutral-600">{faq.answer}</p>
+                  <p className="mt-3 sm:mt-4 text-white/80 text-sm sm:text-base">{faq.answer}</p>
                 </motion.div>
               </motion.button>
             </motion.div>

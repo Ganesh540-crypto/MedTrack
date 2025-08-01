@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useStatsigClient } from "@statsig/react-bindings";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const { client } = useStatsigClient();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,12 +17,6 @@ const Navbar = () => {
 
   const handleScroll = (id: string) => {
     setIsMenuOpen(false);
-    
-    // Log navigation event
-    client?.logEvent("navigation_click", id, {
-      section: id,
-      timestamp: new Date().toISOString()
-    });
     
     if (window.location.pathname !== '/') {
       navigate('/');
@@ -46,7 +38,7 @@ const Navbar = () => {
     <motion.nav
       className={`fixed w-full z-[100] transition-all duration-300 ${
         isScrolled 
-          ? 'md:bg-white/80 md:backdrop-blur-sm bg-white shadow-lg' 
+          ? 'bg-white/10 backdrop-blur-md border-b border-white/20' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -65,7 +57,7 @@ const Navbar = () => {
               alt="MedTrack" 
               className="h-10 w-10"
             />
-            <span className="ml-3 text-xl font-bold text-primary">
+            <span className="ml-3 text-xl font-bold text-white">
               MedTrack
               <span className="text-secondary">.</span>
             </span>
@@ -77,21 +69,13 @@ const Navbar = () => {
             <NavLink onClick={() => handleScroll('screenshots')}>App</NavLink>
             <NavLink onClick={() => handleScroll('how-it-works')}>How It Works</NavLink>
             <NavLink onClick={() => handleScroll('team')}>Team</NavLink>
-            <motion.button
-              onClick={() => window.plugSDK.toggleSearchAgent()}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-            >
-              Search
-            </motion.button>
             <motion.a
               href="https://getwaitlist.com/waitlist/22253"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary"
+              className="bg-white/90 hover:bg-white text-slate-900 px-6 py-2 rounded-full transition-all duration-300"
             >
               Join Waitlist
             </motion.a>
@@ -101,7 +85,7 @@ const Navbar = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 md:hidden text-neutral-600"
+            className="p-2 md:hidden text-white"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -115,29 +99,20 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-effect border-t border-neutral-200 fixed w-full top-20 left-0"
+            className="md:hidden bg-white/10 backdrop-blur-md border-t border-white/20 fixed w-full top-20 left-0"
           >
             <div className="container-custom py-4 space-y-4">
               <MobileNavLink onClick={() => handleScroll('features')}>Features</MobileNavLink>
               <MobileNavLink onClick={() => handleScroll('screenshots')}>App</MobileNavLink>
               <MobileNavLink onClick={() => handleScroll('how-it-works')}>How It Works</MobileNavLink>
               <MobileNavLink onClick={() => handleScroll('team')}>Team</MobileNavLink>
-              <motion.button
-                onClick={() => {
-                  window.plugSDK.toggleSearchAgent();
-                  setIsMenuOpen(false);
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="block w-full text-center btn-primary"
-              >
-                Search
-              </motion.button>
               <motion.a
                 href="https://getwaitlist.com/waitlist/22253"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileTap={{ scale: 0.95 }}
-                className="block w-full btn-primary text-center"
+                className="block w-full text-center bg-white/90 hover:bg-white text-slate-900 px-6 py-2 rounded-full transition-all duration-300"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Join Waitlist
               </motion.a>
@@ -152,12 +127,12 @@ const Navbar = () => {
 const NavLink = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
   <motion.button
     onClick={onClick}
-    className="text-neutral-600 hover:text-primary transition-colors relative group font-medium"
+    className="text-white/80 hover:text-white transition-colors relative group font-medium"
     whileHover={{ y: -2 }}
     whileTap={{ y: 0 }}
   >
     {children}
-    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
   </motion.button>
 );
 
@@ -165,7 +140,7 @@ const MobileNavLink = ({ onClick, children }: { onClick: () => void; children: R
   <motion.button
     onClick={onClick}
     whileTap={{ scale: 0.95 }}
-    className="block w-full text-left px-4 py-2 text-neutral-600 hover:text-primary hover:bg-neutral-50 rounded-lg transition-colors font-medium"
+    className="block w-full text-left px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
   >
     {children}
   </motion.button>

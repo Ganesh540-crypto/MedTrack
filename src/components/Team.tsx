@@ -97,13 +97,7 @@ const team: TeamMemberData[] = [
 
 const Team = () => {
   return (
-    <section id="team" className="py-20 bg-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70" />
-      </div>
-
+    <section id="team" className="py-20 relative overflow-hidden">
       <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -112,21 +106,21 @@ const Team = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium text-neutral-600 bg-neutral-100 px-4 py-2 rounded-full">
+          <span className="text-sm font-medium text-white bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
             Our Team
           </span>
-          <h2 className="text-4xl font-bold mt-6 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-6 mb-4 text-white">
             Meet the Minds Behind
-            <span className="heading-gradient block">
+            <span className="text-white block">
               MedTrack
             </span>
           </h2>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Passionate individuals working together to revolutionize healthcare management.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, index) => (
             <TeamMember key={index} {...member} index={index} />
           ))}
@@ -168,9 +162,9 @@ const TeamMember: React.FC<TeamMemberProps> = ({
         className="relative group"
       >
         {/* Card */}
-        <div className="relative overflow-hidden rounded-2xl bg-white border border-neutral-200 shadow-lg transition-all duration-300 group-hover:shadow-xl">
+        <div className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 shadow-lg transition-all duration-300 group-hover:shadow-xl">
           {/* Image Container */}
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-40 sm:h-48 overflow-hidden">
             <motion.div
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
@@ -190,7 +184,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
               initial={{ opacity: 0, y: 20 }}
               whileHover={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute bottom-4 left-0 right-0 flex justify-center space-x-3 opacity-0 group-hover:opacity-100"
+              className="absolute bottom-3 sm:bottom-4 left-0 right-0 flex justify-center space-x-2 sm:space-x-3 opacity-0 group-hover:opacity-100"
             >
               <SocialLink href={linkedin} icon={Linkedin} label="LinkedIn" />
               <SocialLink href={github} icon={Github} label="GitHub" />
@@ -200,32 +194,32 @@ const TeamMember: React.FC<TeamMemberProps> = ({
                   onClick={(e) => handleEmailClick(e, email)}
                   whileHover={{ scale: 1.2, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/90 text-neutral-700 hover:text-primary hover:bg-white transition-colors shadow-lg"
+                  className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/90 text-slate-700 hover:text-blue-600 hover:bg-white transition-colors shadow-lg"
                   title={`Email ${name}`}
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                 </motion.a>
               )}
             </motion.div>
           </div>
 
           {/* Content */}
-          <div className="p-4">
+          <div className="p-3 sm:p-4">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h3 className="text-lg font-semibold mb-1 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-base sm:text-lg font-semibold mb-1 text-white group-hover:text-white transition-colors duration-300">
                 {name}
               </h3>
-              <p className="text-secondary font-medium mb-2 text-sm">{role}</p>
-              <p className="text-neutral-600 text-sm">{bio}</p>
+              <p className="text-white/80 font-medium mb-2 text-xs sm:text-sm">{role}</p>
+              <p className="text-white/70 text-xs sm:text-sm">{bio}</p>
             </motion.div>
           </div>
 
           {/* Decorative Elements */}
-          <div className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full blur-xl group-hover:opacity-100 transition-opacity duration-300 opacity-0" />
+          <div className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-white/5 to-white/10 rounded-full blur-xl group-hover:opacity-100 transition-opacity duration-300 opacity-0" />
         </div>
       </motion.div>
     </motion.div>
@@ -243,10 +237,10 @@ const SocialLink: React.FC<{
     rel="noopener noreferrer"
     whileHover={{ scale: 1.2, y: -2 }}
     whileTap={{ scale: 0.9 }}
-    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/90 text-neutral-700 hover:text-primary hover:bg-white transition-colors shadow-lg"
+    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/90 text-slate-700 hover:text-blue-600 hover:bg-white transition-colors shadow-lg"
     title={label}
   >
-    <Icon className="w-5 h-5" />
+    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
   </motion.a>
 );
 
